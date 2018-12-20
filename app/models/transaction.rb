@@ -1,5 +1,4 @@
 class Transaction < ApplicationRecord
-
   def total_calc
     if self.currency == 'dollar' && self.transaction_type == 'sell'
       self.total = self.amount * - 1
@@ -19,5 +18,4 @@ class Transaction < ApplicationRecord
   def transaction_type_translate
     self.transaction_type == 'sell' ? 'Venda' : 'Compra'
   end
-
 end
