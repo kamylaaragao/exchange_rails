@@ -1,1 +1,17 @@
-<h1>Bem-vindo ao sistema de trocas de moedas</h1>
+<h1> Bem-vindo ao sistema de trocas de moedas </h1>
+
+<%if @transactions.count > 0
+  for i in @transactions%>
+    <table>
+      </br>
+        <tr><td>Identificador</td> <td><%=i.id%></td> </tr>
+        <tr><td>Quantidade</td> <td><%=i.amount%></td></tr>
+        <tr><td>Moeda</td> <td><%=i.currency == 'dollar' ? 'Dólar' : 'Real'%></td></tr>
+        <tr><td>Tipo</td> <td><%=i.transaction_type == 'sell' ? 'Venda' : 'Compra'%></td></tr>
+        <tr><td>Total</td> <%i.total_calc%> <td><%=i.total_to_s%></td></tr>
+      </br>
+    </table>
+  <%end%>
+<%else%>
+  <p>Você ainda não possui transações cadastradas</p>
+<%end%>
