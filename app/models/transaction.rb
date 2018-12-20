@@ -12,4 +12,12 @@ class Transaction < ApplicationRecord
     '$ %.2f' % self.total
   end
 
+  def currency_translate
+    self.currency == 'dollar' ? 'Dólar' : 'Real'
+  end
+
+  def transaction_type_translate
+    self.transaction_type == 'sell' ? 'Venda' : 'Compra'
+  end
+
 end

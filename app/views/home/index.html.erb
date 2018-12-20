@@ -6,8 +6,8 @@
       </br>
         <tr><td>Identificador</td> <td><%=i.id%></td> </tr>
         <tr><td>Quantidade</td> <td><%=i.amount%></td></tr>
-        <tr><td>Moeda</td> <td><%=i.currency == 'dollar' ? 'Dólar' : 'Real'%></td></tr>
-        <tr><td>Tipo</td> <td><%=i.transaction_type == 'sell' ? 'Venda' : 'Compra'%></td></tr>
+        <tr><td>Moeda</td> <td><%=i.currency_translate%></td></tr>
+        <tr><td>Tipo</td> <td><%=i.transaction_type_translate%></td></tr>
         <tr><td>Total</td> <%i.total_calc%> <td><%=i.total_to_s%></td></tr>
       </br>
     </table>
