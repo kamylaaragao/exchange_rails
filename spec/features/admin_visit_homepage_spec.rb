@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Admin visit homepage' do
   scenario 'successfully' do
-    visit "/"
+    visit root_path
 
     expect(page).to have_content('Bem-vindo ao sistema de trocas de moedas')
   end
@@ -12,7 +12,7 @@ feature 'Admin visit homepage' do
                                      quotation: 3.89,
                                      transaction_type: 'sell')
 
-    visit "/"
+    visit root_path
 
     expect(page).to have_content('Identificador')
     expect(page).to have_content(transaction.id)
@@ -28,13 +28,12 @@ feature 'Admin visit homepage' do
 
   scenario 'and view multiple transactions' do
     transaction = Transaction.create(amount: 100, currency: 'dollar',
-                                     quotation: 3.89,
-                                     transaction_type: 'sell')
+                                     quotation: 3.89, transaction_type: 'sell')
     other_transaction = Transaction.create(amount: 150, currency: 'real',
-                                           quotation: 4.00,
+                                           quotation: 4,
                                            transaction_type: 'buy')
 
-    visit "/"
+    visit root_path
 
     expect(page).to have_content('Identificador')
     expect(page).to have_content('Quantidade')
@@ -56,7 +55,7 @@ feature 'Admin visit homepage' do
   end
 
   scenario 'and has no transactions' do
-    visit "/"
+    visit root_path
 
     expect(page).to have_content('Você ainda não possui transações cadastradas')
   end

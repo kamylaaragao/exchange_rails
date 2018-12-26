@@ -1,14 +1,14 @@
 <h1> Bem-vindo ao sistema de trocas de moedas </h1>
 
 <%if @transactions.count > 0
-  for i in @transactions%>
+  for transaction in @transactions%>
     <table>
       </br>
-        <tr><td>Identificador</td> <td><%=i.id%></td> </tr>
-        <tr><td>Quantidade</td> <td><%=i.amount%></td></tr>
-        <tr><td>Moeda</td> <td><%=i.currency_translate%></td></tr>
-        <tr><td>Tipo</td> <td><%=i.transaction_type_translate%></td></tr>
-        <tr><td>Total</td> <%i.total_calc%> <td><%=i.total_to_s%></td></tr>
+        <tr><td>Identificador</td> <td><%= link_to transaction.id, transaction_path(transaction)%></td> </tr>
+        <tr><td>Quantidade</td> <td><%=transaction.amount%></td></tr>
+        <tr><td>Moeda</td> <td><%=transaction.currency_translate%></td></tr>
+        <tr><td>Tipo</td> <td><%=transaction.transaction_type_translate%></td></tr>
+        <tr><td>Total</td> <%transaction.total_calc%> <td><%=transaction.total_to_s%></td></tr>
       </br>
     </table>
   <%end%>

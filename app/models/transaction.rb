@@ -11,6 +11,10 @@ class Transaction < ApplicationRecord
     '$ %.2f' % self.total
   end
 
+  def quotation_to_s
+    '$ %.2f' % self.quotation
+  end
+
   def currency_translate
     self.currency == 'dollar' ? 'Dólar' : 'Real'
   end
