@@ -14,6 +14,7 @@ class TransactionsController < ApplicationController
     if @transaction.save
       redirect_to root_path
     else
+      flash[:alert] = 'Você deve informar todos os dados da transação'
       render :new
     end
   end
@@ -30,6 +31,7 @@ class TransactionsController < ApplicationController
       redirect_to @transaction
     else
       @users = User.all
+      flash[:alert] = 'Você deve informar todos os dados da transação'
       render :new
     end
   end

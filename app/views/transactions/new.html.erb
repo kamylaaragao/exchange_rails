@@ -1,8 +1,4 @@
-<ul>
-  <% if @transaction.errors.any? %>
-    <p>Você deve informar todos os dados da transação</p>
-  <% end %>
-</ul>
+
 <%= form_for @transaction do |f| %>
   <h3><%= f.label :user_id, 'Usuário' %></h3>
   <%= f.collection_select :user_id, @users, :id, :email %>
