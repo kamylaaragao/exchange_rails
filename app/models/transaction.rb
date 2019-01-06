@@ -1,9 +1,15 @@
 class Transaction < ApplicationRecord
+  validates :amount, :currency, :transaction_type, :quotation, presence: true
+
   def total_calc
     if self.currency == 'dollar' && self.transaction_type == 'sell'
       self.total = self.amount * - 1
     elsif self.currency == 'real' && self.transaction_type == 'buy'
       self.total = self.amount / self.quotation
+    elsif self.currency == 'dollar' && self.transaction_type == 'buy'
+      self.total = self.amount
+    elsif self.currency == 'real' && self.transaction_type == 'sell'
+      self.total = self.amount * self.quotation
     end
   end
 

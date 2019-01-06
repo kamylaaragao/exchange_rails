@@ -4,14 +4,25 @@
   for transaction in @transactions%>
     <table>
       </br>
-        <tr><td>Identificador</td> <td><%= link_to transaction.id, transaction_path(transaction)%></td> </tr>
-        <tr><td>Quantidade</td> <td><%=transaction.amount%></td></tr>
-        <tr><td>Moeda</td> <td><%=transaction.currency_translate%></td></tr>
-        <tr><td>Tipo</td> <td><%=transaction.transaction_type_translate%></td></tr>
-        <tr><td>Total</td> <%transaction.total_calc%> <td><%=transaction.total_to_s%></td></tr>
+        <h3>Identificador</h3>
+        <p><%=link_to transaction.id, transaction_path(transaction)%></p>
+        <h3>Quantidade</h3>
+        <p><%=transaction.amount%></p>
+        <h3>Cotação</h3>
+        <p><%=transaction.quotation_to_s%></p>
+        <h3>Data</h3>
+        <p><%=transaction.created_at.strftime('%d/%m/%Y')%></p>
+        <h3>Moeda</h3>
+        <p><%=transaction.currency_translate%></p>
+        <h3>Tipo</h3>
+        <p><%=transaction.transaction_type_translate%></p>
+        <h3>Total</h3>
+        <p><%transaction.total_calc%><%=transaction.total_to_s%></p>
       </br>
     </table>
   <%end%>
 <%else%>
   <p>Você ainda não possui transações cadastradas</p>
 <%end%>
+
+<%=link_to 'Registrar transação', new_transaction_path %>
