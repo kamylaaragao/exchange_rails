@@ -1,0 +1,9 @@
+<%= form_for @user do |f| %>
+  <h3><%= f.label :name, 'Nome' %></h3>
+    <p><%= f.text_field :name %></p>
+  <h3><%= f.label :email, 'E-mail' %></h3>
+    <p><%= f.text_field :email %></p>
+  <h3><%= f.label :cpf, 'CPF' %></h3>
+    <p><%= f.text_field :cpf %></p>
+  <%= f.submit 'Editar' %>
+<%end%>

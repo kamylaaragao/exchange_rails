@@ -3,3 +3,6 @@
   <p><%= @user.email %></p>
 <h3>CPF</h3>
   <p><%= @user.cpf %></p>
+
+<%= link_to 'Editar', edit_user_path(@user) %></br>
+<%= link_to 'Voltar', users_path %></br>

@@ -1,0 +1,21 @@
+
+<% if @users.count > 0
+  for user in @users%>
+    <table>
+      </br>
+        <h3>Identificador</h3>
+          <p><%= link_to user.id, user_path(user) %></p>
+        <h3>Nome</h3>
+          <p><%= user.name %></p>
+        <h3>E-mail</h3>
+          <p><%= user.email %></p>
+        <h3>CPF</h3>
+          <p><%= user.cpf %></p>
+      </br>
+    </table>
+  <% end %>
+<% else %>
+  <p>Você ainda não possui usuários cadastrados</p>
+<% end %>
+
+<%= link_to 'Cadastrar usuário', new_user_path %>
