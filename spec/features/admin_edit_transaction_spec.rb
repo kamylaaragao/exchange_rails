@@ -1,14 +1,18 @@
 require 'rails_helper'
 
-feature 'Admin register a transaction' do
+feature 'Admin edits transaction' do
   scenario 'successfully' do
+    transaction = Transaction.create(amount: 15, currency: 'real', quotation: 4,
+                      transaction_type: 'buy')
+
     visit root_path
-    click_on 'Registrar transação'
+    click_on transaction.id
+    click_on 'Editar'
     fill_in 'Quantidade', with: 100
     select 'Dólar', from: 'Moeda'
     fill_in 'Cotação', with: 3.89
     select 'Venda', from: 'Tipo'
-    click_on 'Cadastrar'
+    click_on 'Editar'
 
     expect(page).to have_css('h3', text: 'Quantidade')
     expect(page).to have_css('p', text: '100')
@@ -25,11 +29,15 @@ feature 'Admin register a transaction' do
   end
 
   scenario 'and must fill in all fields' do
+    transaction = Transaction.create(amount: 15, currency: 'real', quotation: 4,
+                      transaction_type: 'buy')
+
     visit root_path
-    click_on 'Registrar transação'
+    click_on transaction.id
+    click_on 'Editar'
     fill_in 'Quantidade', with: ''
     fill_in 'Cotação', with: ''
-    click_on 'Cadastrar'
+    click_on 'Editar'
 
     expect(page).to have_content('Você deve informar todos os dados da '\
                                  'transação')
