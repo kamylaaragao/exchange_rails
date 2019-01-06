@@ -1,5 +1,6 @@
 class Transaction < ApplicationRecord
-  validates :amount, :currency, :transaction_type, :quotation, presence: true
+  belongs_to :user
+  validates :amount, :currency, :transaction_type, :quotation, :user_id, presence: true
 
   def total_calc
     if self.currency == 'dollar' && self.transaction_type == 'sell'

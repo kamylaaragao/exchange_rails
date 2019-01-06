@@ -5,9 +5,11 @@ class TransactionsController < ApplicationController
 
   def new
      @transaction = Transaction.new
+     @users = User.all
   end
 
   def create
+    @users = User.all
     @transaction = Transaction.new(transaction_params)
     if @transaction.save
       redirect_to root_path
@@ -18,6 +20,7 @@ class TransactionsController < ApplicationController
 
   def edit
     @transaction = Transaction.find(params[:id])
+    @users = User.all
   end
 
   def update
@@ -26,6 +29,7 @@ class TransactionsController < ApplicationController
     if @transaction.save
       redirect_to @transaction
     else
+      @users = User.all
       render :new
     end
   end
@@ -40,6 +44,6 @@ class TransactionsController < ApplicationController
   private
 
   def transaction_params
-    params.require(:transaction).permit(:amount, :currency, :quotation, :transaction_type)
+    params.require(:transaction).permit(:amount, :currency, :quotation, :transaction_type, :user_id)
   end
 end
