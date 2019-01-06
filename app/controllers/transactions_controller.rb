@@ -30,6 +30,13 @@ class TransactionsController < ApplicationController
     end
   end
 
+  def destroy
+    transaction = Transaction.find(params[:id])
+    transaction.destroy
+    flash[:success] = 'Transação apagada com sucesso!'
+    redirect_to root_path
+  end
+
   private
 
   def transaction_params

@@ -1,28 +1,26 @@
 <h1> Bem-vindo ao sistema de trocas de moedas </h1>
-
-<%if @transactions.count > 0
+<% if @transactions.count > 0
   for transaction in @transactions%>
     <table>
       </br>
         <h3>Identificador</h3>
-        <p><%=link_to transaction.id, transaction_path(transaction)%></p>
+          <p><%= link_to transaction.id, transaction_path(transaction) %></p>
         <h3>Quantidade</h3>
-        <p><%=transaction.amount%></p>
+          <p><%= transaction.amount %></p>
         <h3>Cotação</h3>
-        <p><%=transaction.quotation_to_s%></p>
+          <p><%= transaction.quotation_to_s %></p>
         <h3>Data</h3>
-        <p><%=transaction.created_at.strftime('%d/%m/%Y')%></p>
+          <p><%= transaction.created_at.strftime('%d/%m/%Y') %></p>
         <h3>Moeda</h3>
-        <p><%=transaction.currency_translate%></p>
+          <p><%= transaction.currency_translate %></p>
         <h3>Tipo</h3>
-        <p><%=transaction.transaction_type_translate%></p>
+          <p><%= transaction.transaction_type_translate %></p>
         <h3>Total</h3>
-        <p><%transaction.total_calc%><%=transaction.total_to_s%></p>
+          <p><%transaction.total_calc %><%= transaction.total_to_s %></p>
       </br>
     </table>
-  <%end%>
-<%else%>
+  <% end %>
+<% else %>
   <p>Você ainda não possui transações cadastradas</p>
-<%end%>
-
-<%=link_to 'Registrar transação', new_transaction_path %>
+<% end %>
+<%= link_to 'Registrar transação', new_transaction_path %>
