@@ -6,7 +6,7 @@ class HomeController < ApplicationController
         @transactions = @transactions.public_send(key, value) if value.present?
       end
     else
-      @transactions = Transaction.all
+      @transactions = Transaction.where(created_at: Time.zone.today.beginning_of_day..Time.zone.today.end_of_day)
     end
   end
 

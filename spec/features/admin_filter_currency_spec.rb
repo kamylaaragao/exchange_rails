@@ -27,6 +27,6 @@ feature 'Admin filter by currency' do
     click_on 'Filtrar'
 
     expect(page).to have_content('Você ainda não possui'\
-                                 ' transações cadastradas')
+                                 ' transações cadastradas.')
   end
 end
