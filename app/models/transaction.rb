@@ -1,7 +1,6 @@
 class Transaction < ApplicationRecord
   belongs_to :user
   validates :amount, :currency, :transaction_type, :quotation, :user_id, presence: true
-  scope :currency, -> (currency) { where currency: currency }
 
   def total_calc
     if self.currency == 'dollar' && self.transaction_type == 'sell'
